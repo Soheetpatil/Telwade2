@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जल जीवन मिशन</title>
+
+    <!-- Remove duplicate CSS imports -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="styles/members.css">
+
+    <link rel="icon" type="image/x-icon" href="./Img/main_logo.jpeg">
+    
+    <!-- External CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header will be loaded here - FIXED ID -->
+    <div id="header-placeholder"></div>
+
+        <!-- Main Content Area -->
+    <div class="container mt-5">
+      <!-- Search Bar -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="search-container" data-aos="fade-up">
+            <div class="member-search-wrapper position-relative">
+              <i class="fas fa-search member-search-icon"></i>
+              <input
+                type="text"
+                class="member-search-input"
+                id="searchInput"
+                placeholder="नाव किंवा पदनामानुसार शोधा..."
+              />
+              <button
+                class="btn btn-link member-search-clear position-absolute end-0"
+                id="clearSearch"
+                type="button"
+                style="display: none"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count -->
+      <div class="row mb-3" id="resultsCount" style="display: none">
+        <div class="col-12">
+          <p
+            class="text-muted results-count"
+            data-aos="fade-up"
+            id="resultsText"
+          >
+            <!-- Results text will be populated here -->
+          </p>
+        </div>
+      </div>
+
+      <!-- Village Employees -->
+      <h2 class="section-title text-center mb-4" data-aos="fade-right">
+        ग्रामस्तरिय कर्मचारी
+      </h2>
+
+      <div id="membersGrid">
+        <!-- Members will be populated here -->
+      </div>
+
+      <div
+        class="text-center py-5"
+        id="noResults"
+        style="display: none"
+        data-aos="fade-up"
+      >
+        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">कोणतेही सदस्य सापडले नाहीत</h4>
+        <p class="text-muted">कृपया वेगळे शोधनाव वापरून पुन्हा प्रयत्न करा</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof AOS !== "undefined") {
+          AOS.init({
+            duration: 3000,
+            once: false,
+            easing: "ease-in-out",
+          });
+        }
+
+        // Village employees data
+        // Replace this section in your JavaScript code
+const villageEmployees = [
+  {
+    id: 1,
+    name: "श्री.अलंकार धुमाळ  ",
+    position: "ग्रामपंचायत अधिकारी",
+    contact: "--",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+  {
+    id: 2,
+    name: "सौ.कल्पना अंकुश पवार",
+    position: "सरपंच",
+    contact: "8261857122",
+    photo: "./Img/सरपंच.jpg", // Fixed path
+  },
+  {
+    id: 3,
+    name: "श्री.निलेश हरिश्चंद्र तांबडकर ",
+    position: "उपसरपंच",
+    contact: " 9271484151",
+    photo: "./Img/upsrp.jpg", // Fixed path
+  },
+  {
+    id: 4,
+    name: "श्री.परशुराम नथुराम वाघमारे   ",
+    position: "सदस्य  नंबर 1",
+    contact: "9545670836",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+  {
+    id: 5,
+    name: "सौ.रुपाली रमेश वाघमारे ",
+    position: "सदस्य  नंबर 2",
+    contact: "--",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+  {
+    id: 6,
+    name: "कमल विठ्ठल वारगे ",
+    position: "सदस्य  नंबर 3",
+    contact: "--",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+  {
+    id: 7,
+    name: "सौ.अनिता कृष्णा वारगे   ",
+    position: " सदस्य  नंबर 4",
+    contact: "--",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+  {
+    id: 8,
+    name: "सौ.वसुंधरा काशिनाथ करमरकर",
+    position: "सदस्य  नंबर 5",
+    contact: "--",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+  {
+    id: 9,
+    name: "सौ.हर्षला हरिदास शिंदे   ",
+    position: "सदस्य  नंबर 6",
+    contact: "--",
+    photo: "./Img/no-picture-available-icon-20.jpg", // Fixed path
+  },
+];
+        // DOM Elements
+        const searchInput = document.getElementById("searchInput");
+        const clearSearch = document.getElementById("clearSearch");
+        const resultsCount = document.getElementById("resultsCount");
+        const resultsText = document.getElementById("resultsText");
+        const membersGrid = document.getElementById("membersGrid");
+        const noResults = document.getElementById("noResults");
+
+        // Initial render
+        renderMembers(villageEmployees);
+
+        // Search functionality
+        function handleSearch(e) {
+          const searchTerm = e.target.value;
+
+          if (searchTerm.trim() === "") {
+            clearSearch.style.display = "none";
+            resultsCount.style.display = "none";
+            renderMembers(villageEmployees);
+            return;
+          }
+
+          clearSearch.style.display = "block";
+
+          const filteredMembers = villageEmployees.filter(
+            (member) =>
+              member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              member.position.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+
+          updateResultsCount(filteredMembers.length, searchTerm);
+          renderMembers(filteredMembers);
+        }
+
+        function updateResultsCount(count, searchTerm) {
+          resultsCount.style.display = "block";
+          if (count === 0) {
+            resultsText.textContent =
+              "0 सदस्य सापडले - कृपया वेगळे शोध प्रयत्न करा";
+          } else {
+            resultsText.textContent = `${count} सदस्य सापडले`;
+          }
+        }
+
+        function renderMembers(members) {
+          if (members.length === 0) {
+            membersGrid.style.display = "none";
+            noResults.style.display = "block";
+            return;
+          }
+
+          membersGrid.style.display = "block";
+          noResults.style.display = "none";
+
+          membersGrid.innerHTML = `
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+                        ${members
+                          .map(
+                            (member) => `
+                            <div class="col">
+                                <div class="card shadow-sm h-100 border-0 rounded-4 hover-card p-3 text-center" data-aos="fade-left">
+                                    <div class="avatar mb-3" data-aos="fade-left">
+                                        ${
+                                          member.photo
+                                            ? `<img src="${member.photo}" alt="${member.name}" class="img-fluid">`
+                                            : `<i class="fas fa-user-circle text-primary"></i>`
+                                        }
+                                    </div>
+                                    <h5 class="card-title fw-bold fs-5">${
+                                      member.name
+                                    }</h5>
+                                    <p class="card-text mb-2 text-secondary">${
+                                      member.position
+                                    }</p>
+                                    <p class="card-text text-primary fw-semibold">
+                                        <i class="fas fa-phone me-2"></i>
+                                        ${member.contact}
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
+                `;
+
+          // Re-initialize AOS for new elements
+          if (typeof AOS !== "undefined") {
+            AOS.refresh();
+          }
+        }
+
+        function clearSearchInput() {
+          searchInput.value = "";
+          clearSearch.style.display = "none";
+          resultsCount.style.display = "none";
+          renderMembers(villageEmployees);
+        }
+
+        // Event listeners
+        searchInput.addEventListener("input", handleSearch);
+        clearSearch.addEventListener("click", clearSearchInput);
+      });
+
+
+      
+    </script>
+   
+ <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Function to load HTML components
+        async function loadComponent(elementId, filePath) {
+            try {
+                console.log(`🔄 Loading ${filePath}...`);
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filePath}: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+                console.log(`✅ Successfully loaded ${filePath}`);
+                
+                // Initialize AOS after loading content
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 1000,
+                        once: true,
+                        easing: "ease-in-out",
+                    });
+                    console.log('🎭 AOS initialized after content load');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('❌ Error loading component:', error);
+                document.getElementById(elementId).innerHTML = `
+                    <div class="alert alert-warning text-center">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        ${filePath} लोड करताना त्रुटी आली. कृपया पृष्ठ रीफ्रेश करा.
+                    </div>
+                `;
+                return false;
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DOM fully loaded');
+            
+            // Load header and footer
+            loadComponent('header-placeholder', 'Includes/header.html');
+            loadComponent('footer-placeholder', 'Includes/footer.html');
+            
+            // Initialize AOS for main content
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    easing: "ease-in-out",
+                });
+                console.log('🎭 AOS initialized for main content');
+            }
+            
+            // Update visitor counter after footer is loaded
+            setTimeout(updateVisitorCounter, 1000);
+            
+            // Initialize GR Alert functionality
+            setTimeout(initializeGrAlert, 1500);
+        });
+
+        // Visitor Counter
+        let visitorCount = 12896;
+        function updateVisitorCounter() {
+            visitorCount++;
+            const visitorCounter = document.getElementById('visitorCounter');
+            if (visitorCounter) {
+                visitorCounter.textContent = visitorCount.toLocaleString('mr-IN');
+                console.log('👁️ Visitor counter updated');
+            }
+        }
+
+        // GR Alert Functionality
+        function initializeGrAlert() {
+            console.log('📄 Initializing GR Alert functionality...');
+            
+            // PDF data
+            const grPdfs = [
+                {
+                    id: 1,
+                    title: "राज्यकर उप आयुक्त पदावरुन राज्यकर सह आयुक्त पदावर पदोन्नतीने पदस्थापना",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241213244205.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 2,
+                    title: "महाराष्ट्र कृषि सेवा, गट-अ (कृषि उपसंचालक) संवर्गातील अधिकाऱ्यांच्या विनंती बदल्या/अंशतः बदल..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241506310101....pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 3,
+                    title: "निरीक्षण अधिकारी (पुरवठा)/ परिमंडळ अधिकारी, गट-ब (राजपत्रित) यांच्या बदलीबाबत..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241735325606.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+            ];
+
+            // Handle download function
+            function handleDownload(pdf) {
+                window.open(pdf.url, "_blank", "noopener,noreferrer");
+            }
+
+            // Handle view all forms
+            function handleViewAllForms() {
+                window.open("/all-gr-forms", "_blank");
+            }
+
+            // Render PDF items
+            function renderPdfItems() {
+                const pdfListContainer = document.getElementById("pdfListContainer");
+                
+                if (!pdfListContainer) {
+                    console.error('❌ PDF list container not found');
+                    return;
+                }
+
+                grPdfs.forEach((pdf) => {
+                    const pdfItem = document.createElement("div");
+                    pdfItem.className = "pdf-item";
+                    pdfItem.setAttribute('data-aos', 'fade-up');
+                    pdfItem.innerHTML = `
+                        <div class="pdf-content">
+                            <div class="pdf-icon-title">
+                                <div class="file-icon bg-${pdf.color} text-white rounded d-flex align-items-center justify-content-center">
+                                    <i class="fas ${pdf.icon}"></i>
+                                </div>
+                                <div class="pdf-details">
+                                    <a href="${pdf.url}" class="pdf-title-link" target="_blank" rel="noopener noreferrer">
+                                        <h6 class="pdf-title text-${pdf.color}">${pdf.title}</h6>
+                                    </a>
+                                    <div class="pdf-meta">
+                                        <span class="file-type text-${pdf.color} fw-bold">${pdf.type}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="download-btn" data-pdf-id="${pdf.id}">
+                                <i class="fas fa-download"></i>
+                                <span class="download-text">डाउनलोड</span>
+                            </button>
+                        </div>
+                    `;
+                    pdfListContainer.appendChild(pdfItem);
+                });
+            }
+
+            // Add event listeners
+            function initializeEventListeners() {
+                // View all button
+                const viewAllBtn = document.getElementById("viewAllBtn");
+                if (viewAllBtn) {
+                    viewAllBtn.addEventListener("click", handleViewAllForms);
+                }
+
+                // Download buttons (event delegation)
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".download-btn")) {
+                        const button = e.target.closest(".download-btn");
+                        const pdfId = parseInt(button.getAttribute("data-pdf-id"));
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+
+                // PDF title links
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".pdf-title-link")) {
+                        e.preventDefault();
+                        const link = e.target.closest(".pdf-title-link");
+                        const pdfId = parseInt(
+                            link
+                                .closest(".pdf-item")
+                                .querySelector(".download-btn")
+                                .getAttribute("data-pdf-id")
+                        );
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+            }
+
+            // Initialize GR Alert components
+            renderPdfItems();
+            initializeEventListeners();
+            console.log('✅ GR Alert functionality initialized');
+        }
+
+        // Accessibility Functions
+        function toggleAccessibility() {
+            alert('सुलभता पर्याय सक्रिय केले आहेत. ही वैशिष्ट्ये लवकरच उपलब्ध होतील.');
+        }
+    </script>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'mr', 
+                includedLanguages: 'mr,en,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

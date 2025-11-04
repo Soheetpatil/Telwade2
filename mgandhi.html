@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जल जीवन मिशन</title>
+
+    <!-- Remove duplicate CSS imports -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="styles/members.css">
+
+    <link rel="icon" type="image/x-icon" href="./Img/main_logo.jpeg">
+    
+    <!-- External CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header will be loaded here - FIXED ID -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content Area -->
+    <div class="container mt-5 px-4">
+      <!-- Header with Link -->
+      <div
+        class="d-flex justify-content-between align-items-center mb-4 flex-wrap"
+        data-aos="fade-up"
+      >
+        <h1 class="section-title mb-0" data-aos="fade-right">
+          शासकीय योजना – महात्मा गांधी राष्ट्रीय ग्रामीण रोजगार हमी योजना
+          (MGNREGA)
+        </h1>
+        <a
+          href="https://nrega.nic.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-gradient-info text-white fw-bold"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
+          योजना सविस्तर माहिती
+        </a>
+      </div>
+
+      <!-- MGNREGA Card -->
+      <div class="card shadow-lg rounded-4 p-3" data-aos="zoom-in">
+        <div
+          class="card-header bg-info text-white fw-bold fs-5"
+          data-aos="fade-down"
+        >
+          महात्मा गांधी राष्ट्रीय ग्रामीण रोजगार हमी योजना
+        </div>
+        <div class="card-body">
+          <!-- Top info -->
+          <div class="row">
+            <div class="col-md-6 mb-3" data-aos="fade-right">
+              <p>
+                <strong>उद्देश:</strong> ग्रामीण क्षेत्रातील बेरोजगारांना
+                कमीतकमी १०० दिवस कामाची हमी देणे व आर्थिक सुरक्षा प्रदान करणे.
+              </p>
+              <p><strong>प्रारंभ:</strong> २७ फेब्रुवारी २००६</p>
+              <p>
+                <strong>अधिकार क्षेत्र:</strong> संपूर्ण भारतातील ग्रामीण भाग
+              </p>
+            </div>
+            <div class="col-md-6 mb-3" data-aos="fade-left">
+              <h5 class="mt-3 section-subtitle">योजनेचे मुख्य घटक</h5>
+              <ul class="custom-list">
+                <li>ग्रामीण कामगारांना रोजगाराची हमी देणे.</li>
+                <li>श्रम आणि सामाजिक सुरक्षा सुधारणेसाठी कामांची रचना करणे.</li>
+                <li>
+                  स्थानीय संसाधने विकसित करणे, जसे की नाल्या, तलाव, शेततळे,
+                  फॉरेस्टेशन इत्यादी.
+                </li>
+                <li>
+                  महिला व अनुसूचित जातीय/जनजातीय कामगारांना विशेष प्राधान्य
+                  देणे.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Works -->
+          <h5 class="mt-3 section-subtitle" data-aos="fade-up">
+            योजनेअंतर्गत कामे
+          </h5>
+          <ul class="custom-list" data-aos="fade-up" data-aos-delay="100">
+            <li>
+              ग्रामीण पायाभूत सुविधा उभारणी (रस्ते, पाटबंधारे, पाण्याचे साठे)
+            </li>
+            <li>जलसंधारण आणि जमिनीची सुधारणा</li>
+            <li>वनक्षेत्र आणि पर्यावरण संवर्धनासंबंधी कामे</li>
+            <li>सामाजिक आणि आर्थिक समावेशनासाठी प्रशिक्षण व कौशल्य विकास</li>
+          </ul>
+
+          <!-- Non-expendable items -->
+          <h5 class="mt-3 section-subtitle text-danger" data-aos="fade-up">
+            खर्च करता न येणाऱ्या बाबी
+          </h5>
+          <ul
+            class="custom-list text-danger"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <li>मानधन, पगार, T.A./D.A.</li>
+            <li>समारंभ, सांस्कृतिक कार्यक्रम, सजावट</li>
+            <li>एकाच प्रकल्पावर दुबार खर्च</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   
+ <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Function to load HTML components
+        async function loadComponent(elementId, filePath) {
+            try {
+                console.log(`🔄 Loading ${filePath}...`);
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filePath}: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+                console.log(`✅ Successfully loaded ${filePath}`);
+                
+                // Initialize AOS after loading content
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 1000,
+                        once: true,
+                        easing: "ease-in-out",
+                    });
+                    console.log('🎭 AOS initialized after content load');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('❌ Error loading component:', error);
+                document.getElementById(elementId).innerHTML = `
+                    <div class="alert alert-warning text-center">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        ${filePath} लोड करताना त्रुटी आली. कृपया पृष्ठ रीफ्रेश करा.
+                    </div>
+                `;
+                return false;
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DOM fully loaded');
+            
+            // Load header and footer
+            loadComponent('header-placeholder', 'Includes/header.html');
+            loadComponent('footer-placeholder', 'Includes/footer.html');
+            
+            // Initialize AOS for main content
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    easing: "ease-in-out",
+                });
+                console.log('🎭 AOS initialized for main content');
+            }
+            
+            // Update visitor counter after footer is loaded
+            setTimeout(updateVisitorCounter, 1000);
+            
+            // Initialize GR Alert functionality
+            setTimeout(initializeGrAlert, 1500);
+        });
+
+        // Visitor Counter
+        let visitorCount = 12896;
+        function updateVisitorCounter() {
+            visitorCount++;
+            const visitorCounter = document.getElementById('visitorCounter');
+            if (visitorCounter) {
+                visitorCounter.textContent = visitorCount.toLocaleString('mr-IN');
+                console.log('👁️ Visitor counter updated');
+            }
+        }
+
+        // GR Alert Functionality
+        function initializeGrAlert() {
+            console.log('📄 Initializing GR Alert functionality...');
+            
+            // PDF data
+            const grPdfs = [
+                {
+                    id: 1,
+                    title: "राज्यकर उप आयुक्त पदावरुन राज्यकर सह आयुक्त पदावर पदोन्नतीने पदस्थापना",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241213244205.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 2,
+                    title: "महाराष्ट्र कृषि सेवा, गट-अ (कृषि उपसंचालक) संवर्गातील अधिकाऱ्यांच्या विनंती बदल्या/अंशतः बदल..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241506310101....pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 3,
+                    title: "निरीक्षण अधिकारी (पुरवठा)/ परिमंडळ अधिकारी, गट-ब (राजपत्रित) यांच्या बदलीबाबत..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241735325606.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+            ];
+
+            // Handle download function
+            function handleDownload(pdf) {
+                window.open(pdf.url, "_blank", "noopener,noreferrer");
+            }
+
+            // Handle view all forms
+            function handleViewAllForms() {
+                window.open("/all-gr-forms", "_blank");
+            }
+
+            // Render PDF items
+            function renderPdfItems() {
+                const pdfListContainer = document.getElementById("pdfListContainer");
+                
+                if (!pdfListContainer) {
+                    console.error('❌ PDF list container not found');
+                    return;
+                }
+
+                grPdfs.forEach((pdf) => {
+                    const pdfItem = document.createElement("div");
+                    pdfItem.className = "pdf-item";
+                    pdfItem.setAttribute('data-aos', 'fade-up');
+                    pdfItem.innerHTML = `
+                        <div class="pdf-content">
+                            <div class="pdf-icon-title">
+                                <div class="file-icon bg-${pdf.color} text-white rounded d-flex align-items-center justify-content-center">
+                                    <i class="fas ${pdf.icon}"></i>
+                                </div>
+                                <div class="pdf-details">
+                                    <a href="${pdf.url}" class="pdf-title-link" target="_blank" rel="noopener noreferrer">
+                                        <h6 class="pdf-title text-${pdf.color}">${pdf.title}</h6>
+                                    </a>
+                                    <div class="pdf-meta">
+                                        <span class="file-type text-${pdf.color} fw-bold">${pdf.type}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="download-btn" data-pdf-id="${pdf.id}">
+                                <i class="fas fa-download"></i>
+                                <span class="download-text">डाउनलोड</span>
+                            </button>
+                        </div>
+                    `;
+                    pdfListContainer.appendChild(pdfItem);
+                });
+            }
+
+            // Add event listeners
+            function initializeEventListeners() {
+                // View all button
+                const viewAllBtn = document.getElementById("viewAllBtn");
+                if (viewAllBtn) {
+                    viewAllBtn.addEventListener("click", handleViewAllForms);
+                }
+
+                // Download buttons (event delegation)
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".download-btn")) {
+                        const button = e.target.closest(".download-btn");
+                        const pdfId = parseInt(button.getAttribute("data-pdf-id"));
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+
+                // PDF title links
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".pdf-title-link")) {
+                        e.preventDefault();
+                        const link = e.target.closest(".pdf-title-link");
+                        const pdfId = parseInt(
+                            link
+                                .closest(".pdf-item")
+                                .querySelector(".download-btn")
+                                .getAttribute("data-pdf-id")
+                        );
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+            }
+
+            // Initialize GR Alert components
+            renderPdfItems();
+            initializeEventListeners();
+            console.log('✅ GR Alert functionality initialized');
+        }
+
+        // Accessibility Functions
+        function toggleAccessibility() {
+            alert('सुलभता पर्याय सक्रिय केले आहेत. ही वैशिष्ट्ये लवकरच उपलब्ध होतील.');
+        }
+    </script>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'mr', 
+                includedLanguages: 'mr,en,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</body>
+</html>

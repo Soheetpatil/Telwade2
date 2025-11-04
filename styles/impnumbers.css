@@ -1,0 +1,241 @@
+/* Important Numbers Page Specific Styles */
+:root {
+  --primary-color: #1a5276;
+  --secondary-color: #d4ac0d;
+  --accent-color: #e74c3c;
+  --light-bg: #f8f9fa;
+  --dark-text: #2c3e50;
+}
+
+.contacts-page-body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark-text);
+  background-color: var(--light-bg);
+}
+
+.section-title {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: var(--primary-color);
+  border-left: 4px solid var(--secondary-color);
+  padding-left: 15px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.emergency-card {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.emergency-card:hover {
+  transform: translateY(-5px);
+}
+
+.emergency-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.contacts-search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.contacts-search-box {
+  background: white;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contacts-search-input-group {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.contacts-search-icon {
+  color: var(--primary-color);
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.contacts-search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 12px 0;
+  font-size: 16px;
+  background: transparent;
+}
+
+.contacts-clear-search {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.contacts-clear-search:hover {
+  background: #f0f0f0;
+}
+
+.contacts-search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 10px;
+  overflow: hidden;
+  display: none;
+}
+
+.contacts-search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--light-bg);
+  border-bottom: 1px solid #eee;
+}
+
+.contacts-close-results {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.contacts-search-results-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.contacts-search-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contacts-search-result-item:hover {
+  background: #f8f9fa;
+}
+
+.contacts-result-content {
+  flex: 1;
+}
+
+.contacts-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.contacts-result-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.contacts-result-category {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: var(--light-bg);
+  color: var(--primary-color);
+}
+
+.contacts-result-category.emergency {
+  background: #ffeaea;
+  color: var(--accent-color);
+}
+
+.contacts-result-category.medical {
+  background: #e8f4fd;
+  color: #3498db;
+}
+
+.contacts-result-category.government {
+  background: #e8f5e9;
+  color: #27ae60;
+}
+
+.contacts-result-contact {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.contacts-result-description {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.contacts-result-arrow {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.contacts-no-results {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+}
+
+.contacts-no-results-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.contacts-table th {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.contacts-table td {
+  vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contacts-search-container {
+    margin: 20px 15px;
+  }
+
+  .emergency-card {
+    margin-bottom: 15px;
+  }
+
+  .contacts-table {
+    font-size: 14px;
+  }
+}

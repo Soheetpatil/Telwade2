@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="styles/impnumbers.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/index.css">
+
+</head>
+<body>
+        <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
+        <!-- Main Content Area -->
+    <div class="contacts-search-container" id="searchContainer">
+      <div class="contacts-search-box">
+        <div class="contacts-search-input-group">
+          <i class="fas fa-search contacts-search-icon"></i>
+          <input
+            type="text"
+            class="contacts-search-input"
+            id="searchInput"
+            placeholder="संपर्क क्रमांक, नाव किंवा पत्ता शोधा..."
+          />
+          <button
+            type="button"
+            class="contacts-clear-search"
+            id="clearSearch"
+            style="display: none"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="contacts-search-results-dropdown"
+        id="searchResults"
+        style="display: none"
+      >
+        <div class="contacts-search-results-header">
+          <span id="searchResultsTitle">शोध निकाल: ""</span>
+          <button class="contacts-close-results" id="closeResults">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="contacts-search-results-body">
+          <div class="contacts-search-results-list" id="searchResultsList">
+            <!-- Results will be populated here -->
+          </div>
+          <div class="contacts-no-results" id="noResults" style="display: none">
+            <i class="fas fa-search contacts-no-results-icon"></i>
+            <p id="noResultsText">साठी कोणतेही संपर्क सापडले नाहीत</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <h2 class="section-subtitle mb-3" data-aos="fade-right">
+        महत्वाचे संपर्क — रायगड
+      </h2>
+
+      <!-- Toll Free Helplines -->
+      <section class="mb-5"></section>
+
+      <!-- Colleges -->
+      <section id="colleges-section" class="mb-5">
+        <h4 data-aos="fade-right">🎓 महाविद्यालये</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>संपर्क</th>
+                <th>पत्ता</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="collegesTable">
+              <!-- Colleges data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Municipalities -->
+      <section id="municipalities-section" class="mb-5">
+        <h4 data-aos="fade-right">🏛️ नगरपालिका</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>संपर्क</th>
+                <th>पत्ता</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="municipalitiesTable">
+              <!-- Municipalities data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Hospitals -->
+      <section id="hospitals-section" class="mb-5">
+        <h4 data-aos="fade-right">🏥 रुग्णालये</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>संपर्क</th>
+                <th>पत्ता</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="hospitalsTable">
+              <!-- Hospitals data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Electricity -->
+      <section id="electricity-section" class="mb-5">
+        <h4 data-aos="fade-right">⚡ वीज कार्यालये</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>संपर्क</th>
+                <th>पत्ता</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="electricityTable">
+              <!-- Electricity data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Postal -->
+      <section id="postal-section" class="mb-5">
+        <h4 data-aos="fade-right">📮 पोस्ट ऑफिस</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>संपर्क</th>
+                <th>पत्ता</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="postalTable">
+              <!-- Postal data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Banks -->
+      <section id="banks-section" class="mb-5">
+        <h4 data-aos="fade-right">🏦 बँका</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>संपर्क</th>
+                <th>पत्ता</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="banksTable">
+              <!-- Banks data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Medical Contacts -->
+      <section id="medical-contacts-section" class="mb-5">
+        <h4 data-aos="fade-right">👨‍⚕️ वैद्यकीय संपर्क</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>तालुका</th>
+                <th>रुग्णालय</th>
+                <th>प्रभारी</th>
+                <th>संपर्क</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="medicalContactsTable">
+              <!-- Medical contacts data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ODOP Grievance Contacts -->
+      <section id="odop-section" class="mb-5">
+        <h4 data-aos="fade-right">📋 ODOP तक्रार संपर्क</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead class="table-light" data-aos="fade-down">
+              <tr>
+                <th>क्र.</th>
+                <th>नाव</th>
+                <th>पद</th>
+                <th>संपर्क</th>
+              </tr>
+            </thead>
+            <tbody data-aos="fade-up" id="odopTable">
+              <!-- ODOP data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof AOS !== "undefined") {
+          AOS.init({
+            duration: 1000,
+            once: false,
+            easing: "ease-in-out",
+          });
+        }
+
+        // Data arrays
+        const colleges = [
+          {
+            sr: 1,
+            name: "वसंतराव नाईक आर्ट्स अँड कॉमर्स कॉलेज",
+            contact: "02149-232040",
+            address: "आत-पोस्ट व तालुका – म्हसळा, जिल्हा रायगड, पिन – 402105",
+          },
+          {
+            sr: 2,
+            name: "डी. एस. सी. कॉलेज, मुरुड-जंजीरा",
+            contact: "02144-274310",
+            address: "मुरुड-जंजीरा, तालुका मुरुड, जिल्हा रायगड, महाराष्ट्र - 402401",
+          },
+          {
+            sr: 3,
+            name: "एस. एम. कॉलेज, अलिबाग",
+            contact: "02141-222123",
+            address: "अलिबाग, जिल्हा रायगड, महाराष्ट्र - 402201",
+          },
+        ];
+
+        const municipalities = [
+          {
+            sr: 1,
+            name: "मुरुड नगरपरिषद",
+            contact: "02144-274032",
+            address: "मुरुड-जंजीरा, तालुका मुरुड, जिल्हा रायगड, महाराष्ट्र - 402401",
+          },
+          {
+            sr: 2,
+            name: "अलिबाग नगरपरिषद",
+            contact: "02141-222388",
+            address: "अलिबाग, जिल्हा रायगड, महाराष्ट्र - 402201",
+          },
+        ];
+
+        const hospitals = [
+          {
+            sr: 1,
+            name: "उप जिल्हा रुग्णालय, मुरुड",
+            contact: "02144-274420",
+            address: "मुरुड-जंजीरा, तालुका मुरुड, जिल्हा रायगड, महाराष्ट्र - 402401",
+          },
+          {
+            sr: 2,
+            name: "जिल्हा रुग्णालय, अलिबाग",
+            contact: "02141-222081",
+            address: "अलिबाग, जिल्हा रायगड, महाराष्ट्र - 402201",
+          },
+        ];
+
+        const electricity = [
+          {
+            sr: 1,
+            name: "महावितरण कार्यालय, मुरुड",
+            contact: "02144-274125",
+            address: "महावितरण उपकेंद्र, मुरुड-जंजीरा, रायगड",
+          },
+          {
+            sr: 2,
+            name: "महावितरण कार्यालय, अलिबाग",
+            contact: "02141-222456",
+            address: "महावितरण मुख्य कार्यालय, अलिबाग, रायगड",
+          },
+        ];
+
+        const postal = [
+          {
+            sr: 1,
+            name: "मुरुड पोस्ट ऑफिस",
+            contact: "02144-274310",
+            address: "मुरुड-जंजीरा, रायगड - 402401",
+          },
+          {
+            sr: 2,
+            name: "अलिबाग पोस्ट ऑफिस",
+            contact: "02141-222189",
+            address: "अलिबाग, रायगड - 402201",
+          },
+        ];
+
+        const banks = [
+          {
+            sr: 1,
+            name: "स्टेट बँक ऑफ इंडिया",
+            contact: "02144-274225",
+            address: "मुरुड-जंजीरा शाखा, रायगड",
+          },
+          {
+            sr: 2,
+            name: "बँक ऑफ इंडिया",
+            contact: "02144-274555",
+            address: "मुरुड शाखा, रायगड",
+          },
+        ];
+
+        const medicalContacts = [
+          {
+            sr: 1,
+            taluka: "मुरुड",
+            hospital: "उप जिल्हा रुग्णालय, मुरुड",
+            incharge: "डॉ. प्रभारी",
+            contact: "02144-274420",
+          },
+          {
+            sr: 2,
+            taluka: "अलिबाग",
+            hospital: "जिल्हा रुग्णालय, अलिबाग",
+            incharge: "डॉ. प्रभारी",
+            contact: "02141-222081",
+          },
+        ];
+
+        const oddopGrievanceContacts = [
+          {
+            srNo: 1,
+            name: "जिल्हा अधिकारी",
+            designation: "जिल्हा कलेक्टर",
+            contact: "02141-222001",
+          },
+          {
+            srNo: 2,
+            name: "उप जिल्हा अधिकारी",
+            designation: "उप जिल्हा कलेक्टर",
+            contact: "02144-274001",
+          },
+        ];
+
+        // DOM Elements
+        const searchInput = document.getElementById("searchInput");
+        const clearSearch = document.getElementById("clearSearch");
+        const searchResults = document.getElementById("searchResults");
+        const searchResultsList = document.getElementById("searchResultsList");
+        const noResults = document.getElementById("noResults");
+        const noResultsText = document.getElementById("noResultsText");
+        const searchResultsTitle =
+          document.getElementById("searchResultsTitle");
+        const closeResults = document.getElementById("closeResults");
+        const searchContainer = document.getElementById("searchContainer");
+
+        // Combine all data for search
+        const allContacts = [];
+
+        // Add all data arrays with proper categorization
+        colleges.forEach((item) =>
+          allContacts.push({
+            ...item,
+            category: "महाविद्यालये",
+            type: "educational",
+          })
+        );
+        municipalities.forEach((item) =>
+          allContacts.push({
+            ...item,
+            category: "नगरपालिका",
+            type: "government",
+          })
+        );
+        hospitals.forEach((item) =>
+          allContacts.push({ ...item, category: "रुग्णालये", type: "medical" })
+        );
+        electricity.forEach((item) =>
+          allContacts.push({ ...item, category: "वीज", type: "utility" })
+        );
+        postal.forEach((item) =>
+          allContacts.push({ ...item, category: "पोस्ट", type: "government" })
+        );
+        banks.forEach((item) =>
+          allContacts.push({ ...item, category: "बँका", type: "financial" })
+        );
+        medicalContacts.forEach((item) =>
+          allContacts.push({
+            ...item,
+            category: "वैद्यकीय संपर्क",
+            type: "medical",
+          })
+        );
+        oddopGrievanceContacts.forEach((item) =>
+          allContacts.push({
+            ...item,
+            category: "ODOP तक्रार",
+            type: "government",
+          })
+        );
+
+        // Initial render of tables
+        renderTables();
+
+        // Search functionality
+        function handleSearch(e) {
+          const searchTerm = e.target.value;
+
+          if (searchTerm.trim() === "") {
+            searchResults.style.display = "none";
+            clearSearch.style.display = "none";
+            return;
+          }
+
+          clearSearch.style.display = "block";
+
+          const results = allContacts.filter(
+            (item) =>
+              item.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              item.contact?.toString().includes(searchTerm) ||
+              item.address?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              item.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              (item.designation &&
+                item.designation
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())) ||
+              (item.incharge &&
+                item.incharge
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())) ||
+              (item.taluka &&
+                item.taluka.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (item.hospital &&
+                item.hospital.toLowerCase().includes(searchTerm.toLowerCase()))
+          );
+
+          searchResultsTitle.textContent = `शोध निकाल: "${searchTerm}"`;
+
+          if (results.length > 0) {
+            searchResultsList.innerHTML = "";
+            results.slice(0, 10).forEach((result, index) => {
+              const resultElement = document.createElement("div");
+              resultElement.className = "contacts-search-result-item";
+              resultElement.innerHTML = `
+                            <div class="contacts-result-content">
+                                <div class="contacts-result-header">
+                                    <h6 class="contacts-result-title">${
+                                      result.name ||
+                                      result.hospital ||
+                                      result.taluka
+                                    }</h6>
+                                    <span class="contacts-result-category ${
+                                      result.type
+                                    }">
+                                        ${result.category}
+                                    </span>
+                                </div>
+                                <p class="contacts-result-contact">
+                                    <i class="fas fa-phone me-1"></i>
+                                    ${result.contact}
+                                </p>
+                                ${
+                                  result.address ||
+                                  result.hospital ||
+                                  result.designation
+                                    ? `<p class="contacts-result-description">
+                                        ${
+                                          result.address ||
+                                          result.hospital ||
+                                          result.designation
+                                        }
+                                    </p>`
+                                    : ""
+                                }
+                            </div>
+                            <i class="fas fa-chevron-right contacts-result-arrow"></i>
+                        `;
+              resultElement.addEventListener("click", () =>
+                handleResultClick(result)
+              );
+              searchResultsList.appendChild(resultElement);
+            });
+            searchResults.style.display = "block";
+            noResults.style.display = "none";
+          } else {
+            searchResults.style.display = "block";
+            noResults.style.display = "block";
+            noResultsText.textContent = `'${searchTerm}' साठी कोणतेही संपर्क सापडले नाहीत`;
+          }
+        }
+
+        function handleResultClick(result) {
+          searchResults.style.display = "none";
+          searchInput.value = "";
+          clearSearch.style.display = "none";
+
+          // Scroll to the specific section based on category
+          const sectionMap = {
+            महाविद्यालये: "#colleges-section",
+            नगरपालिका: "#municipalities-section",
+            रुग्णालये: "#hospitals-section",
+            वीज: "#electricity-section",
+            पोस्ट: "#postal-section",
+            बँका: "#banks-section",
+            "वैद्यकीय संपर्क": "#medical-contacts-section",
+            "ODOP तक्रार": "#odop-section",
+          };
+
+          const sectionId = sectionMap[result.category];
+          if (sectionId) {
+            const element = document.querySelector(sectionId);
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        }
+
+        function clearSearchInput() {
+          searchInput.value = "";
+          searchResults.style.display = "none";
+          clearSearch.style.display = "none";
+        }
+
+        function closeResultsPanel() {
+          searchResults.style.display = "none";
+        }
+
+        // Close dropdown when clicking outside
+        function handleClickOutside(event) {
+          if (searchContainer && !searchContainer.contains(event.target)) {
+            searchResults.style.display = "none";
+          }
+        }
+
+        // Render tables with data
+        function renderTables() {
+          // Colleges table
+          document.getElementById("collegesTable").innerHTML = colleges
+            .map(
+              (c) => `
+                    <tr>
+                        <td>${c.sr}</td>
+                        <td>${c.name}</td>
+                        <td>${c.contact}</td>
+                        <td>${c.address}</td>
+                    </tr>
+                `
+            )
+            .join("");
+
+          // Municipalities table
+          document.getElementById("municipalitiesTable").innerHTML =
+            municipalities
+              .map(
+                (m) => `
+                    <tr>
+                        <td>${m.sr}</td>
+                        <td>${m.name}</td>
+                        <td>${m.contact}</td>
+                        <td>${m.address}</td>
+                    </tr>
+                `
+              )
+              .join("");
+
+          // Hospitals table
+          document.getElementById("hospitalsTable").innerHTML = hospitals
+            .map(
+              (h) => `
+                    <tr>
+                        <td>${h.sr}</td>
+                        <td>${h.name}</td>
+                        <td>${h.contact}</td>
+                        <td>${h.address}</td>
+                    </tr>
+                `
+            )
+            .join("");
+
+          // Electricity table
+          document.getElementById("electricityTable").innerHTML = electricity
+            .map(
+              (e) => `
+                    <tr>
+                        <td>${e.sr}</td>
+                        <td>${e.name}</td>
+                        <td>${e.contact}</td>
+                        <td>${e.address}</td>
+                    </tr>
+                `
+            )
+            .join("");
+
+          // Postal table
+          document.getElementById("postalTable").innerHTML = postal
+            .map(
+              (p) => `
+                    <tr>
+                        <td>${p.sr}</td>
+                        <td>${p.name}</td>
+                        <td>${p.contact}</td>
+                        <td>${p.address}</td>
+                    </tr>
+                `
+            )
+            .join("");
+
+          // Banks table
+          document.getElementById("banksTable").innerHTML = banks
+            .map(
+              (b) => `
+                    <tr>
+                        <td>${b.sr}</td>
+                        <td>${b.name}</td>
+                        <td>${b.contact}</td>
+                        <td>${b.address}</td>
+                    </tr>
+                `
+            )
+            .join("");
+
+          // Medical contacts table
+          document.getElementById("medicalContactsTable").innerHTML =
+            medicalContacts
+              .map(
+                (m) => `
+                    <tr>
+                        <td>${m.sr}</td>
+                        <td>${m.taluka}</td>
+                        <td>${m.hospital}</td>
+                        <td>${m.incharge}</td>
+                        <td>${m.contact}</td>
+                    </tr>
+                `
+              )
+              .join("");
+
+          // ODOP table
+          document.getElementById("odopTable").innerHTML =
+            oddopGrievanceContacts
+              .map(
+                (o) => `
+                    <tr>
+                        <td>${o.srNo}</td>
+                        <td>${o.name}</td>
+                        <td>${o.designation}</td>
+                        <td>${o.contact}</td>
+                    </tr>
+                `
+              )
+              .join("");
+        }
+
+        // Event listeners
+        searchInput.addEventListener("input", handleSearch);
+        searchInput.addEventListener("focus", function () {
+          if (searchInput.value.trim() !== "") {
+            searchResults.style.display = "block";
+          }
+        });
+        clearSearch.addEventListener("click", clearSearchInput);
+        closeResults.addEventListener("click", closeResultsPanel);
+        document.addEventListener("mousedown", handleClickOutside);
+      });
+    </script>
+    
+ <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Function to load HTML components
+        async function loadComponent(elementId, filePath) {
+            try {
+                console.log(`🔄 Loading ${filePath}...`);
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filePath}: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+                console.log(`✅ Successfully loaded ${filePath}`);
+                
+                // Initialize AOS after loading content
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 1000,
+                        once: true,
+                        easing: "ease-in-out",
+                    });
+                    console.log('🎭 AOS initialized after content load');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('❌ Error loading component:', error);
+                document.getElementById(elementId).innerHTML = `
+                    <div class="alert alert-warning text-center">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        ${filePath} लोड करताना त्रुटी आली. कृपया पृष्ठ रीफ्रेश करा.
+                    </div>
+                `;
+                return false;
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DOM fully loaded');
+            
+            // Load header and footer
+            loadComponent('header-placeholder', 'Includes/header.html');
+            loadComponent('footer-placeholder', 'Includes/footer.html');
+            
+            // Initialize AOS for main content
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    easing: "ease-in-out",
+                });
+                console.log('🎭 AOS initialized for main content');
+            }
+            
+            // Update visitor counter after footer is loaded
+            setTimeout(updateVisitorCounter, 1000);
+            
+            // Initialize GR Alert functionality
+            setTimeout(initializeGrAlert, 1500);
+        });
+
+        // Visitor Counter
+        let visitorCount = 12896;
+        function updateVisitorCounter() {
+            visitorCount++;
+            const visitorCounter = document.getElementById('visitorCounter');
+            if (visitorCounter) {
+                visitorCounter.textContent = visitorCount.toLocaleString('mr-IN');
+                console.log('👁️ Visitor counter updated');
+            }
+        }
+
+        // GR Alert Functionality
+        function initializeGrAlert() {
+            console.log('📄 Initializing GR Alert functionality...');
+            
+            // PDF data
+            const grPdfs = [
+                {
+                    id: 1,
+                    title: "राज्यकर उप आयुक्त पदावरुन राज्यकर सह आयुक्त पदावर पदोन्नतीने पदस्थापना",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241213244205.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 2,
+                    title: "महाराष्ट्र कृषि सेवा, गट-अ (कृषि उपसंचालक) संवर्गातील अधिकाऱ्यांच्या विनंती बदल्या/अंशतः बदल..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241506310101....pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 3,
+                    title: "निरीक्षण अधिकारी (पुरवठा)/ परिमंडळ अधिकारी, गट-ब (राजपत्रित) यांच्या बदलीबाबत..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241735325606.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+            ];
+
+            // Handle download function
+            function handleDownload(pdf) {
+                window.open(pdf.url, "_blank", "noopener,noreferrer");
+            }
+
+            // Handle view all forms
+            function handleViewAllForms() {
+                window.open("/all-gr-forms", "_blank");
+            }
+
+            // Render PDF items
+            function renderPdfItems() {
+                const pdfListContainer = document.getElementById("pdfListContainer");
+                
+                if (!pdfListContainer) {
+                    console.error('❌ PDF list container not found');
+                    return;
+                }
+
+                grPdfs.forEach((pdf) => {
+                    const pdfItem = document.createElement("div");
+                    pdfItem.className = "pdf-item";
+                    pdfItem.setAttribute('data-aos', 'fade-up');
+                    pdfItem.innerHTML = `
+                        <div class="pdf-content">
+                            <div class="pdf-icon-title">
+                                <div class="file-icon bg-${pdf.color} text-white rounded d-flex align-items-center justify-content-center">
+                                    <i class="fas ${pdf.icon}"></i>
+                                </div>
+                                <div class="pdf-details">
+                                    <a href="${pdf.url}" class="pdf-title-link" target="_blank" rel="noopener noreferrer">
+                                        <h6 class="pdf-title text-${pdf.color}">${pdf.title}</h6>
+                                    </a>
+                                    <div class="pdf-meta">
+                                        <span class="file-type text-${pdf.color} fw-bold">${pdf.type}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="download-btn" data-pdf-id="${pdf.id}">
+                                <i class="fas fa-download"></i>
+                                <span class="download-text">डाउनलोड</span>
+                            </button>
+                        </div>
+                    `;
+                    pdfListContainer.appendChild(pdfItem);
+                });
+            }
+
+            // Add event listeners
+            function initializeEventListeners() {
+                // View all button
+                const viewAllBtn = document.getElementById("viewAllBtn");
+                if (viewAllBtn) {
+                    viewAllBtn.addEventListener("click", handleViewAllForms);
+                }
+
+                // Download buttons (event delegation)
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".download-btn")) {
+                        const button = e.target.closest(".download-btn");
+                        const pdfId = parseInt(button.getAttribute("data-pdf-id"));
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+
+                // PDF title links
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".pdf-title-link")) {
+                        e.preventDefault();
+                        const link = e.target.closest(".pdf-title-link");
+                        const pdfId = parseInt(
+                            link
+                                .closest(".pdf-item")
+                                .querySelector(".download-btn")
+                                .getAttribute("data-pdf-id")
+                        );
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+            }
+
+            // Initialize GR Alert components
+            renderPdfItems();
+            initializeEventListeners();
+            console.log('✅ GR Alert functionality initialized');
+        }
+
+        // Accessibility Functions
+        function toggleAccessibility() {
+            alert('सुलभता पर्याय सक्रिय केले आहेत. ही वैशिष्ट्ये लवकरच उपलब्ध होतील.');
+        }
+    </script>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'mr', 
+                includedLanguages: 'mr,en,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
+</body>
+</html>
