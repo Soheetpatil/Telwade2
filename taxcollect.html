@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./styles/responsive.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/complaint.css">
+        <link rel="stylesheet" href="styles/Navbar.css">
+
     <link rel="icon" type="image/x-icon" href="./Img/main_logo.jpeg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -19,7 +21,332 @@
     <!-- Header will be loaded here -->
     <div id="header-placeholder"></div>
 
+   <!-- Main Content Area -->
 
+    <div class="container-fluid mt-4 px-5">
+      <h1 class="section-title mb-4 text-center">कर संकलन</h1>
+
+      <!-- Tax Message -->
+      <div class="tax-message text-center mb-5">
+        <h1 class="word-rotator slide fw-bold fs-2 mb-3">
+          <span>
+            कृपया घरपट्टी पाणीपट्टि इतर कर भरणा वेळेवर करा व सहकार्य करा.</span
+          >
+        </h1>
+
+        <div class="d-flex justify-content-center gap-4 payment-methods">
+          <div class="payment-method text-center">
+            <i class="fas fa-building fa-2x mb-2"></i>
+            <div>ऑफिस</div>
+          </div>
+          <div class="payment-method text-center">
+            <i class="fas fa-mobile-alt fa-2x mb-2"></i>
+            <div>UPI</div>
+          </div>
+          <div class="payment-method text-center">
+            <i class="fas fa-credit-card fa-2x mb-2"></i>
+            <div>कार्ड</div>
+          </div>
+          <div class="payment-method text-center">
+            <i class="fas fa-landmark fa-2x mb-2"></i>
+            <div>बँक</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Tax Section -->
+      <div class="collapse-section mb-3">
+        <div
+          class="collapse-header d-flex justify-content-between align-items-center p-3 bg-light border rounded"
+          data-bs-toggle="collapse"
+          data-bs-target="#houseTax"
+          role="button"
+        >
+          <span><i class="fas fa-home me-2"></i> घरपट्टी कर</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="houseTax" class="collapse">
+          <div class="collapse-content p-4 border rounded mt-2 text-center">
+            <div class="coming-soon">
+              <i class="fas fa-clock fa-3x mb-3 text-secondary"></i>
+              <h4>Coming Soon..</h4>
+              <p>या विभागात लवकरच सामग्री उपलब्ध होईल</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Water Tax Section -->
+      <div class="collapse-section mb-3">
+        <div
+          class="collapse-header d-flex justify-content-between align-items-center p-3 bg-light border rounded"
+          data-bs-toggle="collapse"
+          data-bs-target="#waterTax"
+          role="button"
+        >
+          <span><i class="fas fa-tint me-2"></i> पाणीपट्टी कर</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="waterTax" class="collapse">
+          <div class="collapse-content p-4 border rounded mt-2 text-center">
+            <div class="coming-soon">
+              <i class="fas fa-clock fa-3x mb-3 text-secondary"></i>
+              <h4>Coming Soon..</h4>
+              <p>या विभागात लवकरच सामग्री उपलब्ध होईल</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Taxes Section -->
+      <div class="collapse-section">
+        <div
+          class="collapse-header d-flex justify-content-between align-items-center p-3 bg-light border rounded"
+          data-bs-toggle="collapse"
+          data-bs-target="#otherTaxes"
+          role="button"
+        >
+          <span><i class="fas fa-receipt me-2"></i> इतर कर</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="otherTaxes" class="collapse">
+          <div class="collapse-content p-4 border rounded mt-2 text-center">
+            <div class="coming-soon">
+              <i class="fas fa-clock fa-3x mb-3 text-secondary"></i>
+              <h4>Coming Soon..</h4>
+              <p>या विभागात लवकरच सामग्री उपलब्ध होईल</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS for collapse functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+       
+ <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+    <script>
+        // Function to load HTML components
+        async function loadComponent(elementId, filePath) {
+            try {
+                console.log(`🔄 Loading ${filePath}...`);
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filePath}: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+                console.log(`✅ Successfully loaded ${filePath}`);
+                
+                // Initialize AOS after loading content
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 1000,
+                        once: true,
+                        easing: "ease-in-out",
+                    });
+                    console.log('🎭 AOS initialized after content load');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('❌ Error loading component:', error);
+                document.getElementById(elementId).innerHTML = `
+                    <div class="alert alert-warning text-center">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        ${filePath} लोड करताना त्रुटी आली. कृपया पृष्ठ रीफ्रेश करा.
+                    </div>
+                `;
+                return false;
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DOM fully loaded');
+            
+            // Load header and footer
+            loadComponent('header-placeholder', 'Includes/header.html');
+            loadComponent('footer-placeholder', 'Includes/footer.html');
+            
+            // Initialize AOS for main content
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    easing: "ease-in-out",
+                });
+                console.log('🎭 AOS initialized for main content');
+            }
+            
+            // Update visitor counter after footer is loaded
+            setTimeout(updateVisitorCounter, 1000);
+            
+            // Initialize GR Alert functionality
+            setTimeout(initializeGrAlert, 1500);
+        });
+
+        // Visitor Counter
+        let visitorCount = 12896;
+        function updateVisitorCounter() {
+            visitorCount++;
+            const visitorCounter = document.getElementById('visitorCounter');
+            if (visitorCounter) {
+                visitorCounter.textContent = visitorCount.toLocaleString('mr-IN');
+                console.log('👁️ Visitor counter updated');
+            }
+        }
+
+        // GR Alert Functionality
+        function initializeGrAlert() {
+            console.log('📄 Initializing GR Alert functionality...');
+            
+            // PDF data
+            const grPdfs = [
+                {
+                    id: 1,
+                    title: "राज्यकर उप आयुक्त पदावरुन राज्यकर सह आयुक्त पदावर पदोन्नतीने पदस्थापना",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241213244205.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 2,
+                    title: "महाराष्ट्र कृषि सेवा, गट-अ (कृषि उपसंचालक) संवर्गातील अधिकाऱ्यांच्या विनंती बदल्या/अंशतः बदल..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241506310101....pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+                {
+                    id: 3,
+                    title: "निरीक्षण अधिकारी (पुरवठा)/ परिमंडळ अधिकारी, गट-ब (राजपत्रित) यांच्या बदलीबाबत..",
+                    url: "https://gr.maharashtra.gov.in/Site/Upload/Government%20Resolutions/Marathi/202510241735325606.pdf",
+                    type: "PDF",
+                    icon: "fa-file-pdf",
+                    color: "danger",
+                },
+            ];
+
+            // Handle download function
+            function handleDownload(pdf) {
+                window.open(pdf.url, "_blank", "noopener,noreferrer");
+            }
+
+            // Handle view all forms
+            function handleViewAllForms() {
+                window.open("/all-gr-forms", "_blank");
+            }
+
+            // Render PDF items
+            function renderPdfItems() {
+                const pdfListContainer = document.getElementById("pdfListContainer");
+                
+                if (!pdfListContainer) {
+                    console.error('❌ PDF list container not found');
+                    return;
+                }
+
+                grPdfs.forEach((pdf) => {
+                    const pdfItem = document.createElement("div");
+                    pdfItem.className = "pdf-item";
+                    pdfItem.setAttribute('data-aos', 'fade-up');
+                    pdfItem.innerHTML = `
+                        <div class="pdf-content">
+                            <div class="pdf-icon-title">
+                                <div class="file-icon bg-${pdf.color} text-white rounded d-flex align-items-center justify-content-center">
+                                    <i class="fas ${pdf.icon}"></i>
+                                </div>
+                                <div class="pdf-details">
+                                    <a href="${pdf.url}" class="pdf-title-link" target="_blank" rel="noopener noreferrer">
+                                        <h6 class="pdf-title text-${pdf.color}">${pdf.title}</h6>
+                                    </a>
+                                    <div class="pdf-meta">
+                                        <span class="file-type text-${pdf.color} fw-bold">${pdf.type}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="download-btn" data-pdf-id="${pdf.id}">
+                                <i class="fas fa-download"></i>
+                                <span class="download-text">डाउनलोड</span>
+                            </button>
+                        </div>
+                    `;
+                    pdfListContainer.appendChild(pdfItem);
+                });
+            }
+
+            // Add event listeners
+            function initializeEventListeners() {
+                // View all button
+                const viewAllBtn = document.getElementById("viewAllBtn");
+                if (viewAllBtn) {
+                    viewAllBtn.addEventListener("click", handleViewAllForms);
+                }
+
+                // Download buttons (event delegation)
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".download-btn")) {
+                        const button = e.target.closest(".download-btn");
+                        const pdfId = parseInt(button.getAttribute("data-pdf-id"));
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+
+                // PDF title links
+                document.addEventListener("click", function (e) {
+                    if (e.target.closest(".pdf-title-link")) {
+                        e.preventDefault();
+                        const link = e.target.closest(".pdf-title-link");
+                        const pdfId = parseInt(
+                            link
+                                .closest(".pdf-item")
+                                .querySelector(".download-btn")
+                                .getAttribute("data-pdf-id")
+                        );
+                        const pdf = grPdfs.find((p) => p.id === pdfId);
+                        if (pdf) {
+                            handleDownload(pdf);
+                        }
+                    }
+                });
+            }
+
+            // Initialize GR Alert components
+            renderPdfItems();
+            initializeEventListeners();
+            console.log('✅ GR Alert functionality initialized');
+        }
+
+        // Accessibility Functions
+        function toggleAccessibility() {
+            alert('सुलभता पर्याय सक्रिय केले आहेत. ही वैशिष्ट्ये लवकरच उपलब्ध होतील.');
+        }
+    </script>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'mr', 
+                includedLanguages: 'mr,en,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
 </body>
 </html>
