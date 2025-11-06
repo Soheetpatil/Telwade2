@@ -917,6 +917,48 @@
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
+    
+        </script>
+
+         <div id="popupOverlay" class="popup-overlay" style="display: none">
+      <div class="popup-content">
+        <button class="close-btn" id="closePopup">&times;</button>
+        <img src="./Img/popup.jpeg" alt="Popup" class="popup-image" />
+      </div>
+    </div>
+
+    
+      <script>document.addEventListener("DOMContentLoaded", function () {
+        const popupOverlay = document.getElementById("popupOverlay");
+        const closePopup = document.getElementById("closePopup");
+
+        // Check if page was reloaded or it's first visit
+        const isReloaded = performance.navigation.type === 1;
+        const hasSeenPopup = sessionStorage.getItem("hasSeenPopup");
+
+        // Show popup on first visit OR page reload
+        if (!hasSeenPopup || isReloaded) {
+          popupOverlay.style.display = "flex";
+          sessionStorage.setItem("hasSeenPopup", "true");
+        }
+
+        closePopup.addEventListener("click", function () {
+          popupOverlay.style.display = "none";
+        });
+
+        popupOverlay.addEventListener("click", function (e) {
+          if (e.target === popupOverlay) {
+            popupOverlay.style.display = "none";
+          }
+        });
+
+        // Close with Escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && popupOverlay.style.display === "flex") {
+            popupOverlay.style.display = "none";
+          }
+        });
+      });
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
