@@ -371,9 +371,11 @@
     transform-origin: top right;
   }
 
-  .email-text {
+.email-text {
     font-size: 12px;
-  }
+    text-align: center;
+    width: 100%;
+}
 }
 .alert {
   padding: 4px 8px !important;
